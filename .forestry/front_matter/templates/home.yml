@@ -42,7 +42,7 @@ fields:
             description: Displays the banner footnote
             default: false
           - type: text
-            name: label
+            name: text
             label: Footnote Text
             description: The text displayed in the footnote
           - type: field_group
