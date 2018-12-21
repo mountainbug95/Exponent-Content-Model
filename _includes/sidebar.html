@@ -1,0 +1,25 @@
+<div class="col-4 col-12-medium">
+
+    <!-- Sidebar -->
+    <section id="sidebar">
+        {% assign arr = site.posts | where_exp: 'item', 'item.show_in_sidebar == true' | sort: 'date' | reverse %}
+        {% for post in arr %}
+            {% unless forloop.first %}
+                <hr />
+            {% endunless %}
+            <section>
+                {% if post.alt_img_path %}
+                    <a href="{{ post.url | relative_url }}" class="image fit"><img src="{{ post.alt_img_path | relative_url }}" alt="" /></a>
+                {% endif %}
+                <h3>{{ post.title }}</h3>
+                {{ post.excerpt | markdownify }}
+                <footer>
+                    <ul class="actions">
+                        <li><a href="{{ post.url | relative_url }}" class="button small alt">Learn More</a></li>
+                    </ul>
+                </footer>
+            </section>
+        {% endfor %}
+    </section>
+
+</div>

@@ -1,0 +1,99 @@
+---
+label: Home
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Page Title
+    description: The landing page title
+    config:
+      required: true
+  - type: field_group
+    name: banner
+    label: Page Banner
+    description: The banner displayed at the top of the page
+    fields:
+      - type: textarea
+        name: title
+        label: Banner Title
+        description: The first lines of text displayed in the page banner
+        config:
+          required: true
+      - type: field_group_list
+        name: actions
+        label: Banner Action Buttons
+        description: The buttons displayed below the banner title
+        config:
+          labelField: label
+        fields:
+          - type: include
+            name: include_action_large
+            label: Action Large
+            template: action_large
+      - type: field_group
+        name: footnote
+        label: Footnote
+        description: The small text displayed below the banner action buttons
+        fields:
+          - type: boolean
+            name: enabled
+            label: Display Footnote
+            description: Displays the banner footnote
+            default: false
+          - type: text
+            name: label
+            label: Footnote Text
+            description: The text displayed in the footnote
+          - type: field_group
+            name: link
+            label: Footnote Link
+            description: The link displayed beside the footnote text
+            fields:
+              - type: boolean
+                name: enabled
+                label: Display Link
+                description: Displays the footnote link
+                default: false
+              - type: text
+                name: label
+                label: Link Text
+              - type: text
+                name: url
+                label: URL
+      - type: field_group
+        name: scroll_button
+        label: Scroll Button
+        description: The scroll button displayed at the bottom of the page banner
+        fields:
+          - type: boolean
+            name: enabled
+            label: Display Scroll Button
+            description: Displays a scroll button at the bottom of the page banner
+            default: false
+          - type: text
+            name: label
+            label: Button Label
+          - type: text
+            name: section_id
+            label: Section ID
+            description: The ID of the section the scroll button points to
+            default: '#spotlight'
+  - type: blocks
+    name: sections
+    label: Sections
+    description: Home Sections
+    template_types:
+      - spotlight
+      - features
+      - posts
+      - cta
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: home
+    config:
+      required: true
+pages:
+  - index.md

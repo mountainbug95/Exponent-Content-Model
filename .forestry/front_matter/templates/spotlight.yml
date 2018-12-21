@@ -1,0 +1,56 @@
+---
+label: Spotlight Section
+hide_body: true
+is_partial: true
+display_field: title
+fields:
+  - type: text
+    name: type
+    label: Type
+    description: The type identifier of this object inside block lists
+    hidden: true
+    default: spotlight
+    config:
+      required: true
+  - type: textarea
+    name: text
+    label: Section Text
+    description: The text displayed below the section title
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: text
+    name: section_id
+    label: Section ID
+    default: spotlight
+    config:
+      required: true
+  - type: field_group
+    name: spotlight_icon
+    label: Spotlight Icon
+    description: The icon displayed above the spotlight title
+    fields:
+      - type: boolean
+        name: enabled
+        label: Display Icon
+        description: displays the Icon at the top of the spotlight section
+        default: false
+      - type: text
+        name: icon
+        label: Icon
+        description: Font Awesome icon
+  - type: textarea
+    name: title
+    label: Section Title
+    description: The bold text displayed above the section content
+    default: Adipiscing lacus accumsan odio massa.
+    config:
+      required: true
+  - type: text
+    name: component
+    label: Section Component
+    hidden: true
+    default: spotlight.html
+    config:
+      required: true

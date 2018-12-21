@@ -1,0 +1,20 @@
+---
+main:
+  - identifier: submenu
+    title: Layouts
+    url: '#'
+    weight: 2
+submenu:
+  - title: Left Sidebar
+    weight: 1
+    url: left-sidebar.html
+  - title: Right Sidebar
+    weight: 2
+    url: right-sidebar.html
+  - title: No Sidebar
+    weight: 3
+    url: no-sidebar.html
+  - title: Contact
+    weight: 4
+    url: contact.html
+---

@@ -1,0 +1,102 @@
+---
+label: Post
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Post Title
+    description: The title displayed at the top of the post
+    config:
+      required: true
+  - type: textarea
+    name: subtitle
+    label: Post Subtitle
+    description: The text displayed below the post title
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: text
+    name: excerpt
+    label: Page Excerpt
+    description: The excerpt displayed in any post thumbnails
+  - type: field_group
+    name: content_img
+    label: Content Image
+    description: The image displayed above the post content
+    fields:
+      - type: boolean
+        name: enabled
+        label: Display Content Image
+        description: Displays the content image
+        default: false
+      - type: file
+        name: path
+        label: Image
+      - type: text
+        name: url
+        label: URL
+        description: The image link
+        default: '#'
+  - type: file
+    name: alt_img_path
+    label: Alternate Image
+    description: The image displayed in any post thumbnails
+  - type: field_group
+    name: sidebar
+    label: Post Sidebar
+    description: The sidebar displayed next to the post content
+    fields:
+      - type: boolean
+        name: enabled
+        label: Display Sidebar
+        description: displays the post sidebar
+        default: false
+      - type: select
+        name: side
+        label: Sidebar Position
+        description: The side of the post the side bar is to be displayed on
+        default: left
+        config:
+          source:
+            type: custom
+          options:
+            - left
+            - right
+  - type: boolean
+    name: show_in_updates
+    label: Display In Updates
+    description: Displays the post in the updates section of the site footer
+    default: false
+  - type: boolean
+    name: show_in_sidebar
+    label: Display Post In Sidebars
+    description: Displays the post in any page sidebars
+    default: false
+  - type: boolean
+    name: show_in_home_posts
+    label: Display In Home Posts
+    description: Displays the post in the landing page posts section
+    default: false
+  - type: datetime
+    name: date
+    label: Date
+    description: The date the post was created
+    config:
+      required: true
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: page
+    config:
+      required: true
+pages:
+  - _posts/2017-04-23-post-01.md
+  - _posts/2017-04-24-post-02.md
+  - _posts/2017-04-25-post-03.md
+  - _posts/2017-04-26-post-04.md
+  - _posts/2017-04-27-post-05.md
+  - _posts/2017-04-28-post-06.md
+  - _posts/2017-04-29-post-07.md
+  - _posts/2017-04-30-post-08.md

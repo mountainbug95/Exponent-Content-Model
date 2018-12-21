@@ -1,0 +1,149 @@
+---
+label: Config
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+    description: Site title
+    config:
+      required: true
+  - type: field_group
+    name: header
+    label: Header Configuration
+    fields:
+      - type: field_group_list
+        name: nav_buttons
+        label: Nav Bar Buttons
+        description: The buttons displayed in the nav bar
+        config:
+          labelField: label
+        fields:
+          - type: include
+            name: include_simple_button
+            label: Simple Button
+            template: simple_button
+      - type: field_group_list
+        name: menu_buttons
+        label: Menu Buttons
+        description: The buttons displayed at the bottom of the nav menu
+        config:
+          labelField: label
+        fields:
+          - type: include
+            name: include_simple_button
+            label: Simple Button
+            template: simple_button
+  - type: field_group
+    name: footer
+    label: Footer Configuration
+    fields:
+      - type: field_group
+        name: about
+        label: About Section
+        fields:
+          - type: boolean
+            name: enabled
+            label: Display Section
+            description: Displays the about section in the page footer
+            default: false
+          - type: textarea
+            name: title
+            label: Section Title
+            description: The title displayed at the top of the section
+          - type: textarea
+            name: text
+            label: Section Text
+            description: The text displayed below the section title
+            config:
+              wysiwyg: true
+              schema:
+                format: markdown
+          - type: field_group_list
+            name: actions
+            label: Section Action Buttons
+            description: The action buttons displayed at the bottom of the section
+            config:
+              labelField: label
+            fields:
+              - type: include
+                name: include_action
+                label: Action
+                template: action
+      - type: field_group
+        name: updates
+        label: Updates Section
+        fields:
+          - type: boolean
+            name: enabled
+            label: Display Section
+            description: Displays the updates section in the page footer
+            default: false
+          - type: text
+            name: title
+            label: Section Title
+            description: The title displayed above the section updates
+      - type: field_group
+        name: contact
+        label: Contact Section
+        fields:
+          - type: boolean
+            name: enabled
+            label: Display Section
+            description: Displays the contact section in the page footer
+            default: false
+          - type: text
+            name: title
+            label: Section Title
+            description: The title displayed above the section icons
+          - type: blocks
+            name: contact_list
+            label: Contact Methods
+            description: A list of contact methods displayed in the section
+            template_types:
+              - contact_with_text
+              - contact_with_link
+      - type: text
+        name: copyright
+        label: Copyright Text
+        description: The copyright text displayed at the bottom of the page footer
+  - type: select
+    name: palette
+    label: Color Palette
+    description: The color palette used for the site
+    default: blue
+    config:
+      required: true
+      source:
+        type: custom
+      options:
+        - blue
+        - green
+        - red
+  - type: field_group
+    name: palettes
+    label: Palettes
+    hidden: true
+    fields:
+      - type: field_group
+        name: blue
+        fields:
+          - type: include
+            name: include_palette
+            label: Palette
+            template: palette
+      - type: field_group
+        name: green
+        fields:
+          - type: include
+            name: include_palette
+            label: Palette
+            template: palette
+      - type: field_group
+        name: red
+        fields:
+          - type: include
+            name: include_palette
+            label: Palette
+            template: palette

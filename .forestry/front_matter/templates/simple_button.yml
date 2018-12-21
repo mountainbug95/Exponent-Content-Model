@@ -1,0 +1,14 @@
+---
+label: Simple Button
+is_partial: true
+display_field: label
+fields:
+  - type: text
+    name: label
+    label: Button Label
+    description: The text displayed inside the button
+    config:
+      required: true
+  - type: text
+    name: url
+    label: URL

@@ -1,0 +1,53 @@
+---
+label: CTA Section
+hide_body: true
+is_partial: true
+display_field: title
+fields:
+  - type: text
+    name: type
+    label: Type
+    description: The type identifier of this object inside block lists
+    hidden: true
+    default: cta
+    config:
+      required: true
+  - type: textarea
+    name: text
+    label: Section Text
+    description: The text displayed below the section title
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: text
+    name: section_id
+    label: Section ID
+    default: cta
+    config:
+      required: true
+  - type: textarea
+    name: title
+    label: Section Title
+    description: The bold text displayed above the section content
+    default: Ipsum commodo blandit.
+    config:
+      required: true
+  - type: field_group_list
+    name: actions
+    label: Section Action Buttons
+    description: The action buttons displayed below the section text
+    config:
+      labelField: label
+    fields:
+      - type: include
+        name: include_action_large
+        label: Action Large
+        template: action_large
+  - type: text
+    name: component
+    label: Section Component
+    hidden: true
+    default: cta.html
+    config:
+      required: true

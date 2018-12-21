@@ -1,0 +1,59 @@
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            {% if site.footer.about.enabled %}
+                <section class="col-4 col-12-medium about">
+                    <h2>{{ site.footer.about.title | newline_to_br }}</h2>
+                    {{ site.footer.about.text | markdownify }}
+                    {% if site.footer.about.actions %}
+                        <ul class="actions">
+                            {% for action in site.footer.about.actions %}
+                                <li><a href="{% assign expr_1 = action.url | starts_with: '#' %}{% if expr_1 %}{{ action.url }}{% else %}{{ action.url | link | relative_url }}{% endif %}" class="button{% if action.is_primary %} primary{% endif %}{% if action.is_scrolly %} scrolly{% endif %}">{{ action.label }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </section>
+            {% endif %}
+            {% if site.footer.updates.enabled %}
+                <section class="col-4 col-6-medium col-12-small">
+                    <h3>{{ site.footer.updates.title }}</h3>
+                    <ul class="updates">
+                        {% assign arr = site.posts | where_exp: 'item', 'item.show_in_updates == true' | sort: 'date' | reverse %}
+                        {% for post in arr %}
+                            <li>
+                                <p><a href="{{ post.url | relative_url }}">{{ post.excerpt }}</a></p>
+                                <span class="timestamp">Posted {{ post.date | date: '%m/%d/%y' }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            {% endif %}
+            {% if site.footer.contact.enabled %}
+                <section class="col-4 col-6-medium col-12-small">
+                    <h3>{{ site.footer.contact.title }}</h3>
+                    <ul class="labeled-icons">
+                        {% for item in site.footer.contact.contact_list %}
+                            <li>
+                                <h4 class="icon alt {{ item.icon }}"><span class="label">{{ item.title }}</span></h4>
+                                {% if item.type == 'contact_with_text' or item.template == 'contact_with_text' %}
+                                    <span>{{ item.label | newline_to_br }}</span>
+                                {% elsif item.type == 'contact_with_link' or item.template == 'contact_with_link' %}
+                                    <a href="{{ item.url }}">{{ item.label | newline_to_br }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            {% endif %}
+        </div>
+    </div>
+    <div class="copyright container">
+        <p>{{ site.footer.copyright }}</p>
+        <ul class="menu">
+            {% for item in site.menus.footer %}
+                <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</footer>

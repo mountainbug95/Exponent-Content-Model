@@ -1,0 +1,85 @@
+title: Exponent
+baseurl: /
+header:
+  nav_buttons:
+    - label: Sign Up
+      url: generic.md
+    - label: Log In
+      url: generic.md
+  menu_buttons:
+    - label: Sign Up
+      url: generic.md
+    - label: Log In
+      url: generic.md
+footer:
+  about:
+    enabled: true
+    title: |-
+      Augue eleifend
+      faucibus et cubilia.
+    text: >-
+      Arcu porttitor ut massa adipiscing nascetur varius lorem ipsum ante ac
+      vestibulum lacinia ante praesent. Iaculis porttitor turpis orci arcu et
+      orci. Lobortis non commodo ante lorem ipsum porttitor turpis orci. Arcu
+      porttitor massa lorem ipsum dolor amet consequat etiam.
+    actions:
+      - label: Erat vestibulum
+        url: generic.md
+        is_primary: false
+        is_scrolly: false
+  updates:
+    enabled: true
+    title: Updates
+  contact:
+    enabled: true
+    title: Get in touch
+    contact_list:
+      - title: Address
+        label: |-
+          1234 Somewhere Road #80486
+          Nashville, TN 00000
+        icon: fa-home
+        type: contact_with_text
+        template: contact_with_text
+      - title: Phone
+        label: (800) 555-0000 x12345
+        icon: fa-phone
+        type: contact_with_text
+        template: contact_with_text
+      - title: Email
+        label: hello@untitled.tld
+        icon: fa-envelope
+        url: '#'
+        type: contact_with_link
+        template: contact_with_link
+      - title: Facebook
+        label: facebook.com/untitled-tld
+        icon: fa-facebook
+        url: '#'
+        type: contact_with_link
+        template: contact_with_link
+      - title: Twitter
+        label: twitter.com/untitled-tld
+        icon: fa-twitter
+        url: '#'
+        type: contact_with_link
+        template: contact_with_link
+  copyright: '&copy; Untitled. All rights reserved.'
+palette: blue
+palettes:
+  blue:
+    sass:
+      color: '#6ec7f5'
+  green:
+    sass:
+      color: '#7ed5b1'
+  red:
+    sass:
+      color: '#a8a3e6'
+sass:
+  indentWidth: 4
+  style: nested
+  precision: 10
+plugins:
+  - jekyll-menus
+permalink: '/posts/:slug:output_ext'

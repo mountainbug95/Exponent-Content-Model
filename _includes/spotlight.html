@@ -1,0 +1,8 @@
+<!-- One -->
+<section id="{{ include.section.section_id }}" class="feature major">
+    {% if include.section.spotlight_icon.enabled %}
+        <span class="icon alt major {{ include.section.spotlight_icon.icon }}"></span>
+    {% endif %}
+    <h2>{{ include.section.title | newline_to_br }}</h2>
+    {{ include.section.text | markdownify }}
+</section>

@@ -1,0 +1,38 @@
+---
+layout: body
+---
+
+    <!-- Main -->
+    <div id="main" class="container">
+        <header class="major">
+            <h2>{{ page.title }}</h2>
+            {{ page.subtitle | markdownify }}
+        </header>
+        {% if page.sidebar.enabled %}
+            <div class="row gtr-150">
+        {% endif %}
+            {% if page.sidebar.enabled and page.sidebar.side == 'left' %}
+                {% include sidebar.html %}
+            {% endif %}
+            {% if page.sidebar.enabled %}
+                <div class="col-8 col-12-medium{% if page.sidebar.side == 'left' %} imp-medium{% endif %}">
+            {% endif %}
+                
+                <!-- Content -->
+                <section id="content">
+                    {% if page.content_img.enabled %}
+                        <a href="{{ page.content_img.url | link | relative_url }}" class="image fit"><img src="{{ page.content_img.path | relative_url }}" alt="" /></a>
+                    {% endif %}
+                    {{ content }}
+                </section>
+                
+            {% if page.sidebar.enabled %}
+                </div>
+            {% endif %}
+            {% if page.sidebar.enabled and page.sidebar.side == 'right' %}
+                {% include sidebar.html %}
+            {% endif %}
+        {% if page.sidebar.enabled %}
+            </div>
+        {% endif %}
+    </div>

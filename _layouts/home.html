@@ -1,0 +1,13 @@
+---
+layout: body
+---
+
+    {% include banner.html %}
+
+    <!-- Main -->
+    <div id="main" class="container">
+        {% for section in page.sections %}
+            
+            {% include {{ section.component }} section=section site=site %}
+        {% endfor %}
+    </div>
