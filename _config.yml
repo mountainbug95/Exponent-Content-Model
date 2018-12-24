@@ -40,25 +40,30 @@ footer:
           Nashville, TN 00000
         icon: fa-home
         type: contact_with_text
+        template: contact_with_text
       - title: Phone
         label: (800) 555-0000 x12345
         icon: fa-phone
         type: contact_with_text
+        template: contact_with_text
       - title: Email
         label: hello@untitled.tld
         icon: fa-envelope
         url: '#'
         type: contact_with_link
+        template: contact_with_link
       - title: Facebook
         label: facebook.com/untitled-tld
         icon: fa-facebook
         url: '#'
         type: contact_with_link
+        template: contact_with_link
       - title: Twitter
         label: twitter.com/untitled-tld
         icon: fa-twitter
         url: '#'
         type: contact_with_link
+        template: contact_with_link
   copyright: '&copy; Untitled. All rights reserved.'
 palette: blue
 palettes:

@@ -35,6 +35,7 @@ sections:
       ante praesent. Iaculis porttitor turpis orci. Arcu porttitor massa.
     component: spotlight.html
     type: spotlight
+    template: spotlight
   - section_id: features
     title: |-
       Sed amet integer
@@ -65,6 +66,7 @@ sections:
         title: Integer nisl faucibus
     component: features.html
     type: features
+    template: features
   - section_id: posts
     title: |-
       Cubilia et lorem
@@ -90,6 +92,7 @@ sections:
         is_scrolly: false
     component: posts.html
     type: posts
+    template: posts
   - section_id: cta
     title: Ipsum commodo blandit.
     text: >-
@@ -103,6 +106,7 @@ sections:
         is_large: true
     component: cta.html
     type: cta
+    template: cta
 menus:
   main:
     title: Home
