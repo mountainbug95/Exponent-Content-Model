@@ -1,0 +1,790 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: uploads
+public_folder: /uploads
+collections:
+  - name: config
+    label: Config
+    files:
+      - name: config
+        label: Config
+        file: _config.yml
+        fields:
+          - name: title
+            label: Title
+            widget: text
+            required: true
+          - name: header
+            widget: object
+            required: false
+            label: Header Configuration
+            fields:
+              - name: nav_buttons
+                widget: list
+                required: false
+                label: Nav Bar Buttons
+                hint: The buttons displayed in the nav bar
+                fields:
+                  - name: label
+                    widget: string
+                    required: true
+                    label: Button Label
+                    hint: The text displayed inside the button
+                  - name: url
+                    widget: string
+                    required: false
+                    label: URL
+              - name: menu_buttons
+                widget: list
+                required: false
+                label: Menu Buttons
+                hint: The buttons displayed at the bottom of the nav menu
+                fields:
+                  - name: label
+                    widget: string
+                    required: true
+                    label: Button Label
+                    hint: The text displayed inside the button
+                  - name: url
+                    widget: string
+                    required: false
+                    label: URL
+          - name: footer
+            widget: object
+            required: false
+            label: Footer Configuration
+            fields:
+              - name: about
+                widget: object
+                required: false
+                label: About Section
+                fields:
+                  - name: enabled
+                    widget: boolean
+                    required: false
+                    label: Display Section
+                    default: false
+                    hint: Displays the about section in the page footer
+                  - name: title
+                    widget: text
+                    required: false
+                    label: Section Title
+                    hint: The title displayed at the top of the section
+                  - name: text
+                    widget: markdown
+                    required: false
+                    label: Section Text
+                    hint: The text displayed below the section title
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    hint: The action buttons displayed at the bottom of the section
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the action button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: URL
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the URL is a
+                          section ID)
+              - name: updates
+                widget: object
+                required: false
+                label: Updates Section
+                fields:
+                  - name: enabled
+                    widget: boolean
+                    required: false
+                    label: Display Section
+                    default: false
+                    hint: Displays the updates section in the page footer
+                  - name: title
+                    widget: string
+                    required: false
+                    label: Section Title
+                    hint: The title displayed above the section updates
+              - name: contact
+                widget: object
+                required: false
+                label: Contact Section
+                fields:
+                  - name: enabled
+                    widget: boolean
+                    required: false
+                    label: Display Section
+                    default: false
+                    hint: Displays the contact section in the page footer
+                  - name: title
+                    widget: string
+                    required: false
+                    label: Section Title
+                    hint: The title displayed above the section icons
+                  - name: contact_list
+                    widget: list
+                    required: false
+                    label: Contact Methods
+                    hint: A list of contact methods displayed in the section
+                    types:
+                      - name: contact_with_text
+                        widget: object
+                        label: Contact With Text
+                        fields:
+                          - name: title
+                            widget: string
+                            required: true
+                            label: Method Title
+                          - name: label
+                            widget: text
+                            required: false
+                            label: Method Description
+                          - name: icon
+                            widget: string
+                            required: true
+                            label: Method Icon
+                            hint: >-
+                              (Font Awesome icon) The icon displayed next to the
+                              method description
+                          - name: template
+                            widget: hidden
+                            required: true
+                            label: Template
+                            default: contact_with_text
+                      - name: contact_with_link
+                        widget: object
+                        label: Contact With Link
+                        fields:
+                          - name: title
+                            widget: string
+                            required: true
+                            label: Method Title
+                          - name: label
+                            widget: text
+                            required: false
+                            label: Method Description
+                          - name: icon
+                            widget: string
+                            required: true
+                            label: Method Icon
+                            hint: >-
+                              (Font Awesome icon) The icon displayed next to the
+                              method description
+                          - name: url
+                            widget: string
+                            required: false
+                            label: URL
+                          - name: template
+                            widget: hidden
+                            required: true
+                            label: Template
+                            default: contact_with_link
+              - name: copyright
+                widget: string
+                required: false
+                label: Copyright Text
+                hint: The copyright text displayed at the bottom of the page footer
+          - name: palette
+            widget: select
+            required: true
+            label: Color Palette
+            default: blue
+            hint: The color palette used for the site
+            options:
+              - blue
+              - green
+              - red
+          - name: palettes
+            widget: hidden
+            required: false
+            label: Palettes
+  - name: home
+    label: Home
+    files:
+      - name: home
+        label: Home
+        file: index.md
+        fields:
+          - name: title
+            widget: string
+            required: true
+            label: Page Title
+            hint: The landing page title
+          - name: banner
+            widget: object
+            required: false
+            label: Page Banner
+            hint: The banner displayed at the top of the page
+            fields:
+              - name: title
+                widget: text
+                required: true
+                label: Banner Title
+                hint: The first lines of text displayed in the page banner
+              - name: actions
+                widget: list
+                required: false
+                label: Banner Action Buttons
+                hint: The buttons displayed below the banner title
+                fields:
+                  - name: label
+                    widget: string
+                    required: true
+                    label: Button Label
+                    hint: The text displayed inside the action button
+                  - name: url
+                    widget: string
+                    required: false
+                    label: URL
+                  - name: is_primary
+                    widget: boolean
+                    required: false
+                    label: Is Primary
+                    default: false
+                    hint: Gives the button a primary color
+                  - name: is_scrolly
+                    widget: boolean
+                    required: false
+                    label: Is Scrolly
+                    default: false
+                    hint: >-
+                      Gives the button a scroll animation (if the URL is a
+                      section ID)
+                  - name: is_large
+                    widget: boolean
+                    required: false
+                    label: Is Large
+                    default: false
+                    hint: Makes the button larger than a standard button
+              - name: footnote
+                widget: object
+                required: false
+                label: Footnote
+                hint: The small text displayed below the banner action buttons
+                fields:
+                  - name: enabled
+                    widget: boolean
+                    required: false
+                    label: Display Footnote
+                    default: false
+                    hint: Displays the banner footnote
+                  - name: text
+                    widget: string
+                    required: false
+                    label: Footnote Text
+                    hint: The text displayed in the footnote
+                  - name: link
+                    widget: object
+                    required: false
+                    label: Footnote Link
+                    hint: The link displayed beside the footnote text
+                    fields:
+                      - name: enabled
+                        widget: boolean
+                        required: false
+                        label: Display Link
+                        default: false
+                        hint: Displays the footnote link
+                      - name: label
+                        widget: string
+                        required: false
+                        label: Link Text
+                      - name: url
+                        widget: string
+                        required: false
+                        label: URL
+              - name: scroll_button
+                widget: object
+                required: false
+                label: Scroll Button
+                hint: The scroll button displayed at the bottom of the page banner
+                fields:
+                  - name: enabled
+                    widget: boolean
+                    required: false
+                    label: Display Scroll Button
+                    default: false
+                    hint: Displays a scroll button at the bottom of the page banner
+                  - name: label
+                    widget: string
+                    required: false
+                    label: Button Label
+                  - name: section_id
+                    widget: string
+                    required: false
+                    label: Section ID
+                    default: '#spotlight'
+                    hint: The ID of the section the scroll button points to
+          - name: sections
+            widget: list
+            required: false
+            label: Sections
+            hint: Home Sections
+            types:
+              - name: spotlight
+                widget: object
+                label: Spotlight Section
+                fields:
+                  - name: text
+                    widget: markdown
+                    required: false
+                    label: Section Text
+                    hint: The text displayed below the section title
+                  - name: section_id
+                    widget: string
+                    required: true
+                    label: Section ID
+                    default: spotlight
+                  - name: spotlight_icon
+                    widget: object
+                    required: false
+                    label: Spotlight Icon
+                    hint: The icon displayed above the spotlight title
+                    fields:
+                      - name: enabled
+                        widget: boolean
+                        required: false
+                        label: Display Icon
+                        default: false
+                        hint: displays the Icon at the top of the spotlight section
+                      - name: icon
+                        widget: string
+                        required: false
+                        label: Icon
+                        hint: Font Awesome icon
+                  - name: title
+                    widget: text
+                    required: true
+                    label: Section Title
+                    default: Adipiscing lacus accumsan odio massa.
+                    hint: The bold text displayed above the section content
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: spotlight.html
+              - name: features
+                widget: object
+                label: Features Section
+                fields:
+                  - name: text
+                    widget: markdown
+                    required: false
+                    label: Section Text
+                    hint: The text displayed below the section title
+                  - name: section_id
+                    widget: string
+                    required: true
+                    label: Section ID
+                    default: features
+                  - name: title
+                    widget: text
+                    required: true
+                    label: Section Title
+                    default: Sed amet integer
+                    hint: The bold text displayed above the section content
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    hint: The action buttons displayed below the section text
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the action button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: URL
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the URL is a
+                          section ID)
+                  - name: features_list
+                    widget: list
+                    required: false
+                    label: Features
+                    hint: A list of features to be displayed in the section
+                    fields:
+                      - name: icon
+                        widget: string
+                        required: true
+                        label: Feature Icon
+                        hint: >-
+                          (Font Awesome icon) The icon displayed above the
+                          feature title
+                      - name: title
+                        widget: string
+                        required: true
+                        label: Feature Title
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: features.html
+              - name: posts
+                widget: object
+                label: Posts Section
+                fields:
+                  - name: text
+                    widget: markdown
+                    required: false
+                    label: Section Text
+                    hint: The text displayed below the section title
+                  - name: section_id
+                    widget: string
+                    required: true
+                    label: Section ID
+                    default: posts
+                  - name: title
+                    widget: text
+                    required: true
+                    label: Section Title
+                    default: Cubilia et lorem
+                    hint: The bold text displayed above the section content
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    hint: The action buttons displayed below the section text
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the action button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: URL
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the URL is a
+                          section ID)
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: posts.html
+              - name: cta
+                widget: object
+                label: CTA Section
+                fields:
+                  - name: text
+                    widget: markdown
+                    required: false
+                    label: Section Text
+                    hint: The text displayed below the section title
+                  - name: section_id
+                    widget: string
+                    required: true
+                    label: Section ID
+                    default: cta
+                  - name: title
+                    widget: text
+                    required: true
+                    label: Section Title
+                    default: Ipsum commodo blandit.
+                    hint: The bold text displayed above the section content
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    hint: The action buttons displayed below the section text
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the action button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: URL
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the URL is a
+                          section ID)
+                      - name: is_large
+                        widget: boolean
+                        required: false
+                        label: Is Large
+                        default: false
+                        hint: Makes the button larger than a standard button
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: cta.html
+          - name: layout
+            widget: hidden
+            required: true
+            label: Layout
+            default: home
+  - name: page
+    label: Pages
+    folder: /
+    filter:
+      field: layout
+      value: page
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - name: title
+        widget: string
+        required: true
+        label: Page Title
+        hint: The title displayed at the top of the page
+      - name: subtitle
+        widget: markdown
+        required: false
+        label: Page Subtitle
+        hint: The text displayed below the page title
+      - name: content_img
+        widget: object
+        required: false
+        label: Content Image
+        hint: The image displayed above the page content
+        fields:
+          - name: enabled
+            widget: boolean
+            required: false
+            label: Display Content Image
+            default: false
+            hint: Displays the content image
+          - name: path
+            widget: image
+            required: false
+            label: Image
+          - name: url
+            widget: string
+            required: false
+            label: URL
+            default: '#'
+            hint: The image link
+      - name: sidebar
+        widget: object
+        required: false
+        label: Page Sidebar
+        hint: The sidebar displayed next to the page content
+        fields:
+          - name: enabled
+            widget: boolean
+            required: false
+            label: Display Sidebar
+            default: false
+            hint: displays the page sidebar
+          - name: side
+            widget: select
+            required: false
+            label: Sidebar Position
+            default: left
+            hint: The side of the page the side bar is to be displayed on
+            options:
+              - left
+              - right
+      - name: layout
+        widget: hidden
+        required: true
+        label: Layout
+        default: page
+      - name: body
+        label: Content
+        widget: markdown
+  - name: post
+    label: Posts
+    folder: _posts
+    filter:
+      field: layout
+      value: page
+    create: true
+    extension: md
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - name: title
+        widget: string
+        required: true
+        label: Post Title
+        hint: The title displayed at the top of the post
+      - name: subtitle
+        widget: markdown
+        required: false
+        label: Post Subtitle
+        hint: The text displayed below the post title
+      - name: excerpt
+        widget: string
+        required: false
+        label: Page Excerpt
+        hint: The excerpt displayed in any post thumbnails
+      - name: content_img
+        widget: object
+        required: false
+        label: Content Image
+        hint: The image displayed above the post content
+        fields:
+          - name: enabled
+            widget: boolean
+            required: false
+            label: Display Content Image
+            default: false
+            hint: Displays the content image
+          - name: path
+            widget: image
+            required: false
+            label: Image
+          - name: url
+            widget: string
+            required: false
+            label: URL
+            default: '#'
+            hint: The image link
+      - name: alt_img_path
+        widget: image
+        required: false
+        label: Alternate Image
+        hint: The image displayed in any post thumbnails
+      - name: sidebar
+        widget: object
+        required: false
+        label: Post Sidebar
+        hint: The sidebar displayed next to the post content
+        fields:
+          - name: enabled
+            widget: boolean
+            required: false
+            label: Display Sidebar
+            default: false
+            hint: displays the post sidebar
+          - name: side
+            widget: select
+            required: false
+            label: Sidebar Position
+            default: left
+            hint: The side of the post the side bar is to be displayed on
+            options:
+              - left
+              - right
+      - name: show_in_updates
+        widget: boolean
+        required: false
+        label: Display In Updates
+        default: false
+        hint: Displays the post in the updates section of the site footer
+      - name: show_in_sidebar
+        widget: boolean
+        required: false
+        label: Display Post In Sidebars
+        default: false
+        hint: Displays the post in any page sidebars
+      - name: show_in_home_posts
+        widget: boolean
+        required: false
+        label: Display In Home Posts
+        default: false
+        hint: Displays the post in the landing page posts section
+      - name: date
+        widget: date
+        required: true
+        label: Date
+        hint: The date the post was created
+      - name: layout
+        widget: hidden
+        required: true
+        label: Layout
+        default: page
+      - name: body
+        label: Content
+        widget: markdown
+  - name: contact
+    label: Contact
+    files:
+      - name: contact
+        label: Contact
+        file: contact.md
+        fields:
+          - name: title
+            widget: string
+            required: true
+            label: Page Title
+            hint: The title displayed at the top of the page
+          - name: subtitle
+            widget: markdown
+            required: false
+            label: Subtitle
+            hint: The text displayed below the page title
+          - name: layout
+            widget: hidden
+            required: true
+            label: Layout
+            default: Contact
+  - name: elements
+    label: Elements
+    files:
+      - name: elements
+        label: Elements
+        file: elements.md
+        fields:
+          - name: title
+            widget: string
+            required: true
+            label: Page Title
+            hint: The title displayed at the top of the page
+          - name: subtitle
+            widget: markdown
+            required: false
+            label: Subtitle
+            hint: The text displayed below the page title
+          - name: layout
+            widget: hidden
+            required: true
+            label: Layout
+            default: elements
