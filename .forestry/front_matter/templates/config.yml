@@ -24,17 +24,6 @@ fields:
             name: include_simple_button
             label: Simple Button
             template: simple_button
-      - type: field_group_list
-        name: menu_buttons
-        label: Menu Buttons
-        description: The buttons displayed at the bottom of the nav menu
-        config:
-          labelField: label
-        fields:
-          - type: include
-            name: include_simple_button
-            label: Simple Button
-            template: simple_button
   - type: field_group
     name: footer
     label: Footer Configuration

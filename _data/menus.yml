@@ -4,6 +4,12 @@ main:
     title: Layouts
     url: '#'
     weight: 2
+  - title: Sign Up
+    url: generic.html
+    weight: 4
+  - title: Log In
+    url: generic.html
+    weight: 5
 submenu:
   - title: Left Sidebar
     weight: 1

@@ -9,14 +9,9 @@
             <li class="special">
                 <a href="#menu" class="icon fa-bars">Menu</a>
                 <div id="menu">
-                    <ul>
                         {% assign menu = site.menus.main %}
                         
                         {% include menu.html menu=menu page=page %}
-                        {% for button in site.header.menu_buttons %}
-                            <li><a href="{% assign expr_2 = button.url | starts_with: '#' %}{% if expr_2 %}{{ button.url }}{% else %}{{ button.url | link | relative_url }}{% endif %}">{{ button.label }}</a></li>
-                        {% endfor %}
-                    </ul>
                 </div>
             </li>
         </ul>

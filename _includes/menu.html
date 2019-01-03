@@ -1,17 +1,18 @@
-{% for item in include.menu %}
-    {% if item.identifier == 'submenu' %}
+<ul>
+    {% for item in include.menu %}
         <li>
-            <span>{{ item.title }}</span>
-            <ul>
-                {% assign expr_1 = item.children | size %}
-                {% if expr_1 > 0 %}
-                    {% assign menu = item.children %}
-                    
-                    {% include menu.html menu=menu page=page %}
-                {% endif %}
-            </ul>
+            {% assign expr_1 = item.children | size %}
+            {% if expr_1 > 0 %}
+                <span>{{ item.title }}</span>
+            {% else %}
+                <a href="{% assign expr_2 = item.url | starts_with: '#' %}{% if expr_2 %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
+            {% endif %}
+            {% assign expr_3 = item.children | size %}
+            {% if expr_3 > 0 %}
+                {% assign menu = item.children %}
+                
+                {% include menu.html menu=menu page=page %}
+            {% endif %}
         </li>
-    {% else %}
-        <li><a href="{% assign expr_2 = item.url | starts_with: '#' %}{% if expr_2 %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a></li>
-    {% endif %}
-{% endfor %}
+    {% endfor %}
+</ul>

@@ -6,11 +6,6 @@ header:
       url: generic.md
     - label: Log In
       url: generic.md
-  menu_buttons:
-    - label: Sign Up
-      url: generic.md
-    - label: Log In
-      url: generic.md
 footer:
   about:
     enabled: true
